@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>P道場｜グッズで応援</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- ナビ -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">P道場</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index') }}">ホーム</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{{ url_for('support') }}"
+                >グッズで応援</a
+              >
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('submissions') }}"
+                >提出履歴</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">ログアウト</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">ログイン</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('register') }}"
+                >ユーザー登録</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <h1 class="text-center mb-4">グッズ購入で P道場をサポート</h1>
+
+      <!-- 1. グッズ購入で応援 -->
+      <section class="mb-5">
+        <h2>ショップ一覧</h2>
+        <p class="lead">
+          下記のオンラインショップで P道場オリジナルグッズを販売中です。<br />
+          ご購入 1 点あたり <strong>¥500〜¥1,000</strong> が
+          P道場の運営費に充当されます。
+        </p>
+
+        <ul class="list-group">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span
+              >Etsy：<a
+                href="https://pepperworldjp.etsy.com"
+                target="_blank"
+                rel="noopener"
+                >pepperworldjp</a
+              ></span
+            >
+            <span class="badge bg-primary rounded-pill"
+              >トート / 図案集 他</span
+            >
+          </li>
+          <!-- 追加入力しやすいようにコメントを残す -->
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span
+              >SUZURI：<a
+                href="https://suzuri.jp/Kazuteru_Suzuki"
+                target="_blank"
+                rel="noopener"
+                >Kazuteru_Suzuki</a
+              ></span
+            >
+            <span class="badge bg-primary rounded-pill">スマホケース</span>
+          </li>
+
+          <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>SUZURI：</span>
+            <span class="badge bg-primary rounded-pill">Tシャツ / ステッカー</span>
+          </li> -->
+        </ul>
+      </section>
+
+      <!-- 2. 使い道 -->
+      <section class="mb-5">
+        <h2>売上の使い道</h2>
+        <ul>
+          <li>サーバー・API 利用料</li>
+          <li>小学生向け教材の新規開発</li>
+          <li>イベント・模擬試験景品</li>
+        </ul>
+      </section>
+
+      <!-- 3. 公式 X (Twitter) -->
+      <section class="mb-5">
+        <h2>公式 X (Twitter)</h2>
+        <p>
+          最新情報や開発裏話は
+          <a href="https://x.com/pi_________man" target="_blank" rel="noopener"
+            >@pi_________man</a
+          >
+          で発信しています。<br />
+          固定ポストに
+          <strong>PayPay 支援用 QR コード</strong>
+          も掲載予定ですので、ぜひチェックしてください！
+        </p>
+      </section>
+
+      <!-- 4. よくある質問 -->
+      <section class="mb-5">
+        <h2>よくある質問</h2>
+
+        <div class="mb-3">
+          <h4>Q. カード明細に名前は表示されますか？</h4>
+          <p>
+            購入時に表示されるストア名は「pepperworldjp」等のハンドルのみです。<br />
+            管理人個人の本名が公開されることはありません。
+          </p>
+        </div>
+
+        <div class="mb-3">
+          <h4>Q. 送料や関税はかかりますか？</h4>
+          <p>
+            Printful
+            の国内拠点から発送される商品は日本国内一律送料です。海外拠点発送の場合は関税が加算される場合があります。
+          </p>
+        </div>
+
+        <div class="mb-3">
+          <h4>Q. 物販以外で応援する方法はありませんか？</h4>
+          <p>
+            今のところグッズ購入のみでのご支援をお願いしています。<br />
+            ご希望が多ければ将来的に匿名寄付オプションを検討します。
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

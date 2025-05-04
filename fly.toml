@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for online-judge-shy-sky-2369 on 2025-05-02T13:53:09+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "pdojo"
+primary_region = 'nrt'
+
+[build]
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = false
+  min_machines_running = 1
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[mounts]
+  source      = "pdojo_data"
+  destination = "/data"
