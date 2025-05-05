@@ -1,0 +1,8 @@
+flask
+numpy
+pandas
+openai
+python-dotenv
+flask-login
+flask-sqlalchemy
+gunicorn
